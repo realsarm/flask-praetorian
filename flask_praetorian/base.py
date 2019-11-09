@@ -605,13 +605,10 @@ class Praetorian:
         """
         Unpacks a jwt token from the current flask request
         """
-        return self._unpack_header(flask.request.cookies)
-    
-    def read_token_from_cookie(self):
-        """
-        Unpacks a jwt token from the current flask request
-        """
+        if (self.header_storage == 'cookie'):
+            return self._unpack_header(flask.request.cookies)
         return self._unpack_header(flask.request.headers)
+        
 
     def pack_header_for_user(
             self, user,
