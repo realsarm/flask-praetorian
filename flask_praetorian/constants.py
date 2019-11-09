@@ -5,6 +5,7 @@ from os.path import dirname, abspath
 
 DEFAULT_JWT_HEADER_NAME = 'Authorization'
 DEFAULT_JWT_HEADER_TYPE = 'Bearer'
+DEFAULT_JWT_HEADER_STORAGE = 'Header'
 DEFAULT_JWT_ACCESS_LIFESPAN = pendulum.duration(minutes=15)
 DEFAULT_JWT_REFRESH_LIFESPAN = pendulum.duration(days=30)
 DEFAULT_JWT_RESET_LIFESPAN = pendulum.duration(minutes=10)
