@@ -155,6 +155,10 @@ class Praetorian:
             'JWT_HEADER_TYPE',
             DEFAULT_JWT_HEADER_TYPE,
         )
+        self.header_storage = app.config.get(
+            'JWT_HEADER_STORAGE',
+            DEFAULT_JWT_HEADER_STORAGE,
+        )
         self.user_class_validation_method = app.config.get(
             'USER_CLASS_VALIDATION_METHOD',
             DEFAULT_USER_CLASS_VALIDATION_METHOD,
@@ -598,6 +602,12 @@ class Praetorian:
         return token
 
     def read_token_from_header(self):
+        """
+        Unpacks a jwt token from the current flask request
+        """
+        return self._unpack_header(flask.request.cookies)
+    
+    def read_token_from_cookie(self):
         """
         Unpacks a jwt token from the current flask request
         """
